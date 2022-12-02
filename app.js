@@ -10,11 +10,12 @@ const usersRouter = require("./routes/users");
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "common";
-var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
-  flags: "a",
-});
+// var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
+//   flags: "a",
+// });
 
-app.use(logger(formatsLogger, { stream: accessLogStream }));
+// app.use(logger(formatsLogger, { stream: accessLogStream }));
+app.use(logger(formatsLogger));
 
 app.use(cors());
 app.use(express.json());
