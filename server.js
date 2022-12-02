@@ -4,6 +4,11 @@ require("dotenv").config();
 
 const { DB_URI, PORT } = process.env;
 
+// const DB_URI =
+//   "mongodb+srv://denis:Ot0UzVGiGGwOpjsC@wallet-database.q8jesgd.mongodb.net/wallet-database?retryWrites=true&w=majority";
+
+// const PORT = 3000;
+
 mongoose
   .connect(DB_URI)
   .then(() => {
