@@ -1,15 +1,17 @@
-const fs = require("fs");
-const path = require("path");
-const express = require("express");
-const logger = require("morgan");
-const cors = require("cors");
-require("dotenv").config();
+const fs = require('fs');
+const path = require('path');
+const express = require('express');
+const logger = require('morgan');
+const cors = require('cors');
+require('dotenv').config();
+const swaggerUi = require('swagger-ui-express');
 
-const usersRouter = require("./routes/users");
+const swaggerDocument = require('./swagger.json');
+const usersRouter = require('./routes/users');
 
 const app = express();
 
-const formatsLogger = app.get("env") === "development" ? "dev" : "common";
+const formatsLogger = app.get('env') === 'development' ? 'dev' : 'common';
 // var accessLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
 //   flags: "a",
 // });
@@ -19,12 +21,13 @@ app.use(logger(formatsLogger));
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static('public'));
 
-app.use("/users", usersRouter);
+app.use('/users', usersRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {
-  res.status(404).json({ message: "Not found" });
+  res.status(404).json({ message: 'Not found' });
 });
 
 app.use((err, req, res, next) => {
