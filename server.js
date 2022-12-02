@@ -2,10 +2,7 @@ const { app } = require("./app");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const DB_URI =
-  "mongodb+srv://denis:Ot0UzVGiGGwOpjsC@wallet-database.q8jesgd.mongodb.net/?retryWrites=true&w=majority";
-
-const PORT = 3000;
+const { DB_URI, PORT } = process.env;
 
 mongoose
   .connect(DB_URI)
