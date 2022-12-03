@@ -1,0 +1,278 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "version": "1.0",
+        "title": "Wallet",
+        "description": "API documentation for project",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+        
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "servers": [
+        {
+            "url": "https://wallet-project.cyclic.app/"
+        },
+        {
+            "url": "http://localhost:3000/"
+        }
+    ],
+    "tags": [
+        {
+            "name": "User",
+            "description": "Users endpoints"
+        },
+        {
+            "name": "Transactions",
+            "description": "Transactions endpoints"
+        }
+    ],
+    "paths": {
+        "/users/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary":"User registration",
+                "parameters": [],
+                "requestBody": {
+                    "description": "Registration's object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegistrationRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfull operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RegistrationResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {}
+                    },
+                    "409": {
+                        "description": "Email in use",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User login",
+                "parameters": [],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "requestBody": {
+                    "description": "Login's object",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfull operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/users/logout": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary":"User logout",
+                "parameters":[],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Not authorized",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/transactions/add": {
+            "post": {
+                "tags": [
+                    "Transactions"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RegistrationRequest": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "User's name",
+                        "example": "Kostya"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "User's email",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "User's password",
+                        "example": "Qwerty123"
+                    }
+                }
+            },
+            "RegistrationResponse": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "description": "success",
+                        "example": "User successfully created"
+                    },
+                    "user": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "User's name",
+                                "example": "Kostya"
+                            },
+                            "email": {
+                                "type": "string",
+                                "description": "User's email",
+                                "format": "email"
+                            },
+                            "balance": {
+                                "type": "integer",
+                                "description": "User's balance",
+                                "example": 100
+                            }
+                        }
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "token",
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                    }
+                }
+            },
+            "LoginRequest": {
+                "type": "object",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "User's email",
+                        "format": "email"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "User's password",
+                        "example": "Qwerty123"
+                    }
+                }
+            },
+            "LoginResponse": {
+                "type":"object",
+                "properties": {
+                    "token": {
+                        "type": "string",
+                        "description": "token",
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                    },
+                    "user": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "description": "User's name",
+                                "example": "Kostya"
+                            },
+                            "email": {
+                                "type": "string",
+                                "description": "User's email",
+                                "format": "email"
+                            },
+                            "balance": {
+                                "type": "integer",
+                                "description": "User's balance",
+                                "example": 100
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "securitySchemes": {
+    "Bearer": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT"
+    }
+  }
+}

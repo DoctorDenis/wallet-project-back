@@ -17,8 +17,8 @@ module.exports = class userService {
     if (result) {
       authResult = await bcrypt.compare(body.password, result.password);
     } else {
-      const error = new Error(`User with email ${body.email} not found in db`);
-      error.code = 404;
+      const error = new Error(`Email or password is wrong`);
+      error.code = 403;
       throw error;
     }
 

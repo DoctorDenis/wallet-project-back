@@ -9,6 +9,7 @@ module.exports = async function validateToken(req, res, next) {
 
   try {
     const result = jwt.verify(token, ACCES_TOKEN_SEKRET_KEY);
+
     const user = await userService.getUserInfoById(result._id);
     req.user = user;
   } catch (error) {
