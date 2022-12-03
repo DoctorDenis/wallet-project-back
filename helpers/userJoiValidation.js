@@ -28,7 +28,8 @@ const registrationUserSchema = Joi.object({
 
   subscription: Joi.string().valid("basic", "pro").default("basic"),
 
-  token: Joi.string(),
+  accesToken: Joi.string(),
+  refreshToken: Joi.string(),
 }).messages({
   "any.required": "You forgot to provide {{#label}}",
   // "string.pattern.base":
@@ -53,7 +54,8 @@ const loginUserSchema = Joi.object({
     })
     .required(),
 
-  token: Joi.string(),
+  accesToken: Joi.string(),
+  refreshToken: Joi.string(),
 });
 
 module.exports = validateUser = (req, res, next) => {

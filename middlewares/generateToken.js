@@ -1,9 +1,13 @@
 // require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
-const { SECRET_KEY } = process.env;
+const { ACCES_TOKEN_SEKRET_KEY, REFRESH_TOKEN_SEKRET_KEY } = process.env;
 
 module.exports = function generateToken(payload) {
-  const token = jwt.sign(JSON.stringify(payload), SECRET_KEY);
-  return token;
+  const accesToken = jwt.sign(JSON.stringify(payload), ACCES_TOKEN_SEKRET_KEY );
+  const refreshToken = jwt.sign(JSON.stringify(payload), REFRESH_TOKEN_SEKRET_KEY);
+  return {
+    accesToken,
+    refreshToken,
+  };
 };

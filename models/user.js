@@ -30,6 +30,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Verify token is required"],
   },
+  accesToken: {
+    type: String,
+    default: "",
+  },
+  refreshToken: {
+    type: String,
+    default: "",
+  }
 });
 
 const userModel = mongoose.model("users", userSchema);
