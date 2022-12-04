@@ -8,6 +8,8 @@ const { schemas } = require("../models/transaction");
 
 const router = express.Router();
 
+router.get("/", ctrlWrapper(ctrl.getAll));
+
 router.post("/add", validateBody(schemas.joiSchema), ctrlWrapper(ctrl.add));
 
 module.exports = router;
