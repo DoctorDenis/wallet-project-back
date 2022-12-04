@@ -76,17 +76,12 @@
             }
         },
         "/users/login": {
-            "get": {
+            "post": {
                 "tags": [
                     "User"
                 ],
                 "summary": "User login",
-                "parameters": [],
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ],
+                "parameters": [],                
                 "requestBody": {
                     "description": "Login's object",
                     "required": true,
@@ -232,7 +227,7 @@
                     "password": {
                         "type": "string",
                         "description": "User's password",
-                        "example": "Qwerty123"
+                        "example": "123456"
                     }
                 }
             },
@@ -266,13 +261,13 @@
                     }
                 }
             }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
         }
-    },
-    "securitySchemes": {
-    "Bearer": {
-      "type": "http",
-      "scheme": "bearer",
-      "bearerFormat": "JWT"
-    }
-  }
+    }    
 }
