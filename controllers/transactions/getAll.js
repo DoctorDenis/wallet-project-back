@@ -1,10 +1,10 @@
-const { Transaction } = require("../../models/transactions");
+const { Transaction } = require('../../models/transaction');
 
 const getAll = async (req, res) => {
   const { _id: owner } = req.user;
   const transactions = await Transaction.find(
     { owner },
-    "-createdAt -updatedAt"
+    '-createdAt -updatedAt'
   );
   //   const { page = 1, limit = 10, ...filter } = req.query;
   //   const skip = (page - 1) * limit;
