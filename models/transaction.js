@@ -18,6 +18,19 @@ const addTransactionSchema = new Schema({
   category: {
     type: String,
     required: true,
+    default: "Main expenses",
+    enum: [
+      "Main expenses",
+      "Products",
+      "Car",
+      "Self care",
+      "Child care",
+      "Household products",
+      "Education",
+      "Leisure",
+      "Other expenses",
+      "Entertainment",
+    ],
   },
   date: {
     type: String,
@@ -53,7 +66,6 @@ const joiSchema = Joi.object({
     "string.base": "'date' should be a type of 'string'",
     "any.required": "'date' is a required field",
   }),
-  owner: Joi.string().allow(),
 });
 
 const schemas = {

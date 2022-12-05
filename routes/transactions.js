@@ -9,6 +9,7 @@ const { schemas } = require("../models/transaction");
 
 const router = express.Router();
 
+router.get("/", validateToken, ctrlWrapper(ctrl.getAll));
 router.post(
   "/add",
   validateBody(schemas.joiSchema),

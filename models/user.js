@@ -32,6 +32,14 @@ const userSchema = new mongoose.Schema({
   },
   temporaryPassword: { type: String, default: null },
   transactions: [{ type: mongoose.Schema.Types.ObjectId, ref: "transaction" }],
+  accesToken: {
+    type: String,
+    default: "",
+  },
+  refreshToken: {
+    type: String,
+    default: "",
+  },
 });
 
 const userModel = mongoose.model("users", userSchema);
