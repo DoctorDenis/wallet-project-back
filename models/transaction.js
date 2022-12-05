@@ -23,11 +23,11 @@ const addTransactionSchema = new Schema({
     type: String,
     required: true,
   },
-  // owner: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "user",
-  //   required: true,
-  // },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
 });
 
 addTransactionSchema.post("save", saveErrorHandler);
@@ -53,6 +53,7 @@ const joiSchema = Joi.object({
     "string.base": "'date' should be a type of 'string'",
     "any.required": "'date' is a required field",
   }),
+  owner: Joi.string().allow(),
 });
 
 const schemas = {

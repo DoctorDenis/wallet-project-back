@@ -11,10 +11,9 @@ module.exports = async function validateToken(req, res, next) {
     const user = await userService.getUserInfoById(result._id);
     req.user = user;
   } catch (error) {
-    // error.message = "Not authorized";
-    // error.code = 401;
+    error.message = "Not authorized";
+    error.code = 401;
     next(error);
   }
-
   next();
 };

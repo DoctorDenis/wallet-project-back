@@ -3,11 +3,17 @@ const express = require("express");
 const ctrl = require("../controllers/transactions");
 
 const ctrlWrapper = require("../helpers/ctrlWrapper");
+const validateToken = require("../helpers/validateToken");
 const { validateBody } = require("../middlewares");
 const { schemas } = require("../models/transaction");
 
 const router = express.Router();
 
-router.post("/add", validateBody(schemas.joiSchema), ctrlWrapper(ctrl.add));
+router.post(
+  "/add",
+  validateBody(schemas.joiSchema),
+  validateToken,
+  ctrlWrapper(ctrl.add)
+);
 
 module.exports = router;
