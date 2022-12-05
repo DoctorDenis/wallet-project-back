@@ -16,7 +16,8 @@ const getAll = async (req, res) => {
   //       limit,
   //     }
   //   ).populate("owner", "name email");
-  res.json(transactions);
+  
+  res.json({ transactions });
 };
 
 module.exports = getAll;

@@ -3,7 +3,7 @@ const generateToken = require("../../middlewares/generateToken");
 const gravatar = require("gravatar");
 const shortid = require("shortid");
 const createUserBodyResponse = require("../../helpers/createUserBodyResponse");
-const {userModel} = require("../../models/user");
+const { userModel } = require("../../models/user");
 // const sendEmail = require("../../helpers/sendEmail");
 // const generateEmailBody = require("../../helpers/generateEmailBody");
 
@@ -22,7 +22,11 @@ async function register(req, res, next) {
     const token = generateToken(result);
 
     const { accesToken, refreshToken } = token;
-    await userModel.updateMany({accesToken: accesToken, refreshToken: refreshToken});
+
+    // await userModel.updateMany({
+    //   accesToken: accesToken,
+    //   refreshToken: refreshToken,
+    // });
 
     res.status(201).json({
       message: "User successfully created",
