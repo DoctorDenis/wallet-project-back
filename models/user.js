@@ -30,6 +30,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Verify token is required"],
   },
+  temporaryPassword: { type: String, default: null },
+  transactions: [{ type: mongoose.Schema.Types.ObjectId, ref: "transaction" }],
   accesToken: {
     type: String,
     default: "",
@@ -37,7 +39,7 @@ const userSchema = new mongoose.Schema({
   refreshToken: {
     type: String,
     default: "",
-  }
+  },
 });
 
 const userModel = mongoose.model("users", userSchema);

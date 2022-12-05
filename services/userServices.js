@@ -12,7 +12,9 @@ module.exports = class userService {
   }
 
   static async loginUser(body) {
-    const result = await userModel.findOne({ email: body.email });
+    const result = await userModel
+      .findOne({ email: body.email })
+      .populate("transactions");
     let authResult = null;
     if (result) {
       authResult = await bcrypt.compare(body.password, result.password);
@@ -32,7 +34,7 @@ module.exports = class userService {
   }
 
   static async getUserInfoById(id) {
-    const user = await userModel.findById(id);
+    const user = await userModel.findById(id).populate("transactions");
     if (!user) {
       throw ResponseError(404, "Not found");
     } else {
@@ -100,6 +102,26 @@ module.exports = class userService {
       const error = new Error("Verification has already been passed");
       error.code = 400;
       throw error;
+    } else {
+      return user;
+    }
+  }
+
+  static async addTransactionToUser(id, transaction) {
+    //Знаходимо юзера по id та пушимо у його масив транзакцій id нової транзакції
+    const user = await userModel
+      .findOneAndUpdate(
+        { _id: id },
+        {
+          $push: { transactions: transaction._id },
+        },
+        //Повертаємо оновленного юзера з новою транзакцією
+        { returnDocument: "after" }
+      )
+      //Заселяємо масив транзакцій повною інформацією про транзакції
+      .populate("transactions");
+    if (!user) {
+      throw new ResponseError(404);
     } else {
       return user;
     }
