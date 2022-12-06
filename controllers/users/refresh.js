@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 
 const ResponseError = require("../../helpers/errorHandler")
 
-const { REFRESH_TOKEN_SEKRET_KEY, ACCES_TOKEN_SEKRET_KEY} = process.env;
+const { SECRET_KEY } = process.env;
 
 const refresh = async (req, res) => {
     const { refreshToken: token } = req.body;
     try {
-        const {_id} = jwt.verify(token, REFRESH_TOKEN_SEKRET_KEY);
+        const {_id} = jwt.verify(token, SECRET_KEY);
         // console.log(_id)
         const user = await userModel.findById(_id);
         // console.log(user._id)
@@ -21,8 +21,8 @@ const refresh = async (req, res) => {
             id: user._id,
         }
         // console.log(payload)
-        const accesToken = jwt.sign(payload, ACCES_TOKEN_SEKRET_KEY);
-        const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SEKRET_KEY);
+        const accesToken = jwt.sign(payload, SECRET_KEY);
+        const refreshToken = jwt.sign(payload, SECRET_KEY);
         await userModel.findByIdAndUpdate(user._id, {accesToken, refreshToken});
         res.json({
             accesToken,

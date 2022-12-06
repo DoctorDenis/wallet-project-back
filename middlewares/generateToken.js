@@ -6,12 +6,12 @@ const jwt = require("jsonwebtoken");
 
 
 
-const { ACCES_TOKEN_SEKRET_KEY, REFRESH_TOKEN_SEKRET_KEY } = process.env;
+const { SECRET_KEY } = process.env;
 
 module.exports = function generateToken(payload) {
   // console.log(payload.id)
-  const accesToken = jwt.sign(JSON.stringify(payload), ACCES_TOKEN_SEKRET_KEY);
-  const refreshToken = jwt.sign(JSON.stringify(payload), REFRESH_TOKEN_SEKRET_KEY);
+  const accesToken = jwt.sign(JSON.stringify(payload), SECRET_KEY);
+  const refreshToken = jwt.sign(JSON.stringify(payload), SECRET_KEY);
   return {
     accesToken,
     refreshToken,
