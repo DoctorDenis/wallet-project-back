@@ -8,7 +8,8 @@ async function login(req, res, next) {
     const result = await userService.loginUser(req.body);
     const token = generateToken(result);
     const { accesToken, refreshToken } = token;
-    const {_id} = result;
+    const { _id } = result;
+    console.log(_id)
     await userModel.findByIdAndUpdate(_id, {accesToken, refreshToken});
 
     res.status(200).json( {user: createUserBodyResponse(result), accesToken, refreshToken } );

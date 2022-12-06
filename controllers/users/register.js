@@ -23,7 +23,7 @@ async function register(req, res, next) {
 
     const { accesToken, refreshToken } = token;
     await userModel.updateMany({accesToken: accesToken, refreshToken: refreshToken});
-
+// console.log(first)
     res.status(201).json({
       message: "User successfully created",
       user: createUserBodyResponse(result),
