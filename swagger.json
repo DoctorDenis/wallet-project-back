@@ -146,7 +146,49 @@
             "post": {
                 "tags": [
                     "Transactions"
-                ]
+                ],
+                "summary": "Add a transaction",
+                "parameters":[],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "requestBody": {
+                    "description": "Request body with session's id",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddTransactionRequest"
+                            }
+                        }
+                    }                        
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successfull operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AddTransactionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
             }
         }
     },
@@ -202,10 +244,20 @@
                                 "type": "integer",
                                 "description": "User's balance",
                                 "example": 100
+                            },
+                            "transactions": {
+                                "type": [],
+                                "description": "User's transaction",
+                                "example": []
                             }
                         }
                     },
-                    "token": {
+                    "accesToken": {
+                        "type": "string",
+                        "description": "token",
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                    },
+                    "refreshToken": {
                         "type": "string",
                         "description": "token",
                         "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
@@ -256,6 +308,109 @@
                                 "type": "integer",
                                 "description": "User's balance",
                                 "example": 100
+                            },
+                            "transactions": {
+                                "type": [],
+                                "description": "User's transaction",
+                                "example": []
+                            }
+                        }
+                    },
+                    "accesToken": {
+                        "type": "string",
+                        "description": "token",
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                    },
+                    "refreshToken": {
+                        "type": "string",
+                        "description": "token",
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                    }
+                }
+            },
+            "AddTransactionRequest": {
+                "type": "object",
+                "required": [
+                    "isIncome",
+                    "amount",
+                    "category",
+                    "date"
+                ],
+                "properties": {
+                    "isIncome": {
+                        "type": "boolean",
+                        "description": "Typy of transaction",
+                        "example": true
+                    },
+                    "amount": {
+                        "type": "string",
+                        "description": "Sum of transaction",
+                        "example": "1000"
+                    },
+                    "category": {
+                        "type": "string",
+                        "oneOf": [
+                            "Main expenses",
+                            "Products",
+                            "Car",
+                            "Self care",
+                            "Child care",
+                            "Household products",
+                            "Education",
+                            "Leisure",
+                            "Other expenses",
+                            "Entertainment"
+                        ],
+                        "description": "Transaction category",
+                        "example": "Car"
+                    },
+                    "date": {
+                        "type": "string",
+                        "description": "Date of transaction",
+                        "example": "11.11.2022"
+                    }
+                }
+            },
+            "AddTransactionResponse": {
+                "type": "object",
+                "properties": {
+                    "transactions": {
+                        "type": "object",
+                        "properties": {
+                            "_id": {
+                                "type": "string",
+                                "description": "User ID",
+                                "example": "638f11b0e5b55643929616a6"
+                            },
+                            "isIncome": {
+                                "type": "boolean",
+                                "description": "Type of transaction",
+                                "example": true
+                            },
+                            "amount": {
+                                "type": "string",
+                                "description": "Sum of transaction",
+                                "example": "1000"
+                            },
+                            "comment": {
+                                "type": "string",
+                                "description": "Comment of transaction",
+                                "example": ""
+                            },
+                            "category": {
+                                "type": "string",
+                                "description": "Category of transaction",
+                                "example": "Car"
+                            },
+                            "date": {
+                                "type": "string",
+                                "description": "Date of transaction",
+                                "example": "11.11.2022"
+                            },
+                            "owner": {
+                                "type": "string",
+                                "description": "User of transaction",
+                                "example": "638f11b0e5b55643929616a6"
                             }
                         }
                     }
