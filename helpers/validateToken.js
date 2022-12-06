@@ -2,7 +2,6 @@ const userService = require("../services/userServices");
 const jwt = require("jsonwebtoken");
 
 const { SECRET_KEY } = process.env;
-const { SECRET_KEY } = process.env;
 
 module.exports = async function validateToken(req, res, next) {
   const token = req.headers.authorization.split(" ")[1];
