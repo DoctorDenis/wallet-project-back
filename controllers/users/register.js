@@ -21,14 +21,11 @@ async function register(req, res, next) {
     const result = await userService.registerUser(body);
     const token = generateToken(result);
 
-    const { accesToken, refreshToken } = token;
-    await userModel.updateMany({accesToken: accesToken, refreshToken: refreshToken});
-// console.log(first)
     res.status(201).json({
       message: "User successfully created",
       user: createUserBodyResponse(result),
-      accesToken,
-      refreshToken,
+      accesToken: token.accesToken,
+      refreshToken: token.refreshToken,
     });
 
     // const emailBody = generateEmailBody(result);

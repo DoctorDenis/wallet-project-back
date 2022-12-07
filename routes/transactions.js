@@ -18,5 +18,4 @@ router.post(
   ctrlWrapper(ctrl.add)
 );
 
-
 module.exports = router;

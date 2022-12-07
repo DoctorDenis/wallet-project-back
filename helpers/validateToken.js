@@ -10,8 +10,7 @@ module.exports = async function validateToken(req, res, next) {
 
   try {
     const result = jwt.verify(token, SECRET_KEY);
-console.log(result.id)
-    const user = await userService.getUserInfoById(result.id);
+    const user = await userService.getUserInfoById(result._id);
     req.user = user;
   } catch (error) {
     error.message = "Not authorized";
