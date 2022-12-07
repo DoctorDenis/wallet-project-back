@@ -58,10 +58,15 @@ const loginUserSchema = Joi.object({
   refreshToken: Joi.string(),
 });
 
+const refreshTokenSchema = Joi.object({
+  refreshToken: Joi.string().required(),
+});
+
 module.exports = validateUser = (req, res, next) => {
   const obj = {
     ["/register"]: registrationUserSchema,
     ["/login"]: loginUserSchema,
+    ["/refresh"]: refreshTokenSchema,
   };
 
   const { error, value } = obj[req.url].validate(req.body);
