@@ -40,9 +40,11 @@ const registrationUserSchema = Joi.object({
 
 const loginUserSchema = Joi.object({
   password: Joi.string()
-    .pattern(/^[a-zA-Z0-9]{6,}$/)
     .min(6)
     .max(16)
+    .pattern(
+      /^[ЙЦУКНГШЩЗХЇЄЖДЛОРПАВІФЮБЬТИМСЧЯйцукенгшщзхїєждлорпавіфячсмитьбю A-Za-z0-9~!@#$%^\[\]&*()_+}{":;./+*,'?><-]+$/
+    )
     .required(),
 
   email: Joi.string()
