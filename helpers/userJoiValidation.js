@@ -3,7 +3,7 @@ const Joi = require("joi");
 const registrationUserSchema = Joi.object({
   name: Joi.string()
     .pattern(
-      /[ЙЦУКНГШЩЗХЇЄЖДЛОРПАВІФЮБЬТИМСЧЯйцукенгшщзхїєждлорпавіфячсмитьбюA-Za-z']/
+      /^[ЙЦУКНГШЩЗХЇЄЖДЛОРПАВІФЮБЬТИМСЧЯйцукенгшщзхїєждлорпавіфячсмитьбю A-Za-z-]+$/
     )
     .min(1)
     .max(12)
