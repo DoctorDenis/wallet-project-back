@@ -32,6 +32,10 @@
         {
             "name": "Transactions",
             "description": "Transactions endpoints"
+        },
+        {
+            "name": "Exchange rate",
+            "description": "Get exchange rate from Monobank API"
         }
     ],
     "paths": {
@@ -142,6 +146,93 @@
                 }
             }
         },
+        "/users/refresh": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get new pairs of tokens",
+                "parameters": [],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "requestBody": {
+                    "description": "Request body with session's id",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RefreshTokensRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfull operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RefreshTokensResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Not authorized",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/transactions": {
+            "get": {
+                "tags": [
+                    "Transactions"
+                ],
+                "summary": "Get transactions by user",
+                "parameters":[],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfull operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetAllTransactionsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            }
+        },
         "/transactions/add": {
             "post": {
                 "tags": [
@@ -187,6 +278,20 @@
                     "404": {
                         "description": "Not found",
                         "content": {}
+                    }
+                }
+            }
+        },
+        "/currency": {
+            "get": {
+                "tags": [
+                    "Exchange rate"
+                ],
+                "summary": "Get exchange rate from Monobank API",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Successfull operation"
                     }
                 }
             }
@@ -328,6 +433,14 @@
                     }
                 }
             },
+            "RefreshTokensRequest": {
+                "type": "object",
+                "properties": {}
+            },
+            "RefreshTokensResponse": {
+                "type": "object",
+                "properties": {}
+            },
             "AddTransactionRequest": {
                 "type": "object",
                 "required": [
@@ -343,7 +456,7 @@
                         "example": true
                     },
                     "amount": {
-                        "type": "string",
+                        "type": "number",
                         "description": "Sum of transaction",
                         "example": "1000"
                     },
@@ -388,7 +501,7 @@
                                 "example": true
                             },
                             "amount": {
-                                "type": "string",
+                                "type": "number",
                                 "description": "Sum of transaction",
                                 "example": "1000"
                             },
@@ -413,6 +526,46 @@
                                 "example": "638f11b0e5b55643929616a6"
                             }
                         }
+                    }
+                }
+            },
+            "GetAllTransactionsResponse": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string",
+                        "description": "User ID",
+                        "example": "638f11b0e5b55643929616a6"
+                    },
+                    "isIncome": {
+                        "type": "boolean",
+                        "description": "Type of transaction",
+                        "example": true
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "Sum of transaction",
+                        "example": "1000"
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "Comment of transaction",
+                        "example": ""
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Category of transaction",
+                        "example": "Car"
+                    },
+                    "date": {
+                        "type": "string",
+                        "description": "Date of transaction",
+                        "example": "11.11.2022"
+                    },
+                        "owner": {
+                        "type": "string",
+                        "description": "User of transaction",
+                        "example": "638f11b0e5b55643929616a6"
                     }
                 }
             }
