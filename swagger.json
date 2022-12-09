@@ -456,7 +456,7 @@
                         "example": true
                     },
                     "amount": {
-                        "type": "string",
+                        "type": "number",
                         "description": "Sum of transaction",
                         "example": "1000"
                     },
@@ -501,7 +501,7 @@
                                 "example": true
                             },
                             "amount": {
-                                "type": "string",
+                                "type": "number",
                                 "description": "Sum of transaction",
                                 "example": "1000"
                             },
@@ -543,7 +543,7 @@
                         "example": true
                     },
                     "amount": {
-                        "type": "string",
+                        "type": "number",
                         "description": "Sum of transaction",
                         "example": "1000"
                     },
