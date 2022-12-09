@@ -8,7 +8,7 @@ const addTransactionSchema = new Schema({
     required: true,
   },
   amount: {
-    type: String,
+    type: Number,
     required: true,
   },
   comment: {
@@ -19,21 +19,10 @@ const addTransactionSchema = new Schema({
     type: String,
     required: true,
     default: "Main expenses",
-    enum: [
-      "Main expenses",
-      "Products",
-      "Car",
-      "Self care",
-      "Child care",
-      "Household products",
-      "Education",
-      "Leisure",
-      "Other expenses",
-      "Entertainment",
-    ],
   },
   date: {
-    type: String,
+    type: Date,
+    default: Date.now,
     required: true,
   },
   owner: {
@@ -52,8 +41,8 @@ const joiSchema = Joi.object({
     "boolean.base": "'isIncome' should be a type of 'boolean'",
     "any.required": "'isIncome' is a required field",
   }),
-  amount: Joi.string().required().messages({
-    "string.base": "'amount' should be a type of 'string'",
+  amount: Joi.number().required().messages({
+    "number.base": "'amount' should be a type of 'number'",
     "any.required": "'amount' is a required field",
   }),
   comment: Joi.string().messages({
@@ -62,7 +51,7 @@ const joiSchema = Joi.object({
   category: Joi.string().messages({
     "string.base": "'category' should be a type of 'string'",
   }),
-  date: Joi.string().messages({
+  date: Joi.date().messages({
     "string.base": "'date' should be a type of 'string'",
     "any.required": "'date' is a required field",
   }),
