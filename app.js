@@ -12,7 +12,6 @@ const categoriesRouter = require("./routes/categories");
 const statisticsRouter = require("./routes/statistics");
 const currencyRouter = require("./routes/currency");
 
-
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "common";
@@ -33,8 +32,8 @@ app.use("/users", usersRouter);
 app.use("/transactions", transRouter);
 app.use("/categories", categoriesRouter);
 app.use("/statistics", statisticsRouter);
-
 app.use("/currency", currencyRouter);
+
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
