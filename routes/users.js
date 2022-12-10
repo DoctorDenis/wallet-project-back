@@ -6,6 +6,7 @@ const {
   login,
   logout,
   refresh,
+  getCurrent
 } = require("../controllers/users/index");
 
 const router = express.Router();
@@ -14,5 +15,6 @@ router.post("/register", validateUser, register);
 router.post("/login", validateUser, login);
 router.post("/logout", validateToken, logout);
 router.post("/refresh", validateUser, refresh);
+router.get("/current", validateToken, getCurrent);
 
 module.exports = router;
