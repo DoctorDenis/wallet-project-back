@@ -4,6 +4,8 @@ module.exports = async function getStatistics(req, res, next) {
   // const [year, month, day] = req.query.date.split("-");
 
   const { month, year } = req.query;
+  const params = req.query;
+  console.log("params:", params);
   const { _id: owner } = req.user;
 
   // month = Number(month);
