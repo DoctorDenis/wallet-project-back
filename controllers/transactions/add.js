@@ -17,8 +17,8 @@ const add = async (req, res) => {
     req.user._id,
     transaction
   );
-  //Повертаємо у response оновлену історію транзакцій юзера
-  res.status(201).json({ data: transaction });
+  //Повертаємо у response нову транзакцію
+  res.status(201).json(transaction);
 };
 
 module.exports = add;
