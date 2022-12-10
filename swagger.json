@@ -34,6 +34,14 @@
             "description": "Transactions endpoints"
         },
         {
+            "name": "Categories",
+            "description": "Categories endpoints"
+        },
+        {
+            "name": "Statistics",
+            "description": "Statistics endpoints"
+        },
+        {
             "name": "Exchange rate",
             "description": "Get exchange rate from Monobank API"
         }
@@ -59,7 +67,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Successfull operation",
+                        "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -99,7 +107,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successfull operation",
+                        "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -171,11 +179,49 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successfull operation",
+                        "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/RefreshTokensResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Not authorized",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "users/current": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get user's information by access token",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Succsessful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CurrentUserResponse"
                                 }
                             }
                         }
@@ -209,7 +255,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfull operation",
+                        "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -258,11 +304,122 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Successfull operation",
+                        "description": "Successful operation",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/AddTransactionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get categories",
+                "parameters": [],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetCategoriesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {}
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "content": {}
+                    }
+                }
+            }
+        },
+        "/statistics": {
+            "get": {
+                "tags": [
+                    "Statistics"
+                ],
+                "summary": "Get statistics by user",
+                "parameters": [
+                    {
+                        "name": "month",
+                        "in": "query",
+                        "description": "Month of expenses",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8",
+                                "9",
+                                "10",
+                                "11",
+                                "12"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "year",
+                        "in": "query",
+                        "description": "Year of expenses",
+                        "required": true,
+                        "explode": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succsessful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetStatisticsResponse"
                                 }
                             }
                         }
@@ -291,7 +448,7 @@
                 "parameters": [],
                 "responses": {
                     "200": {
-                        "description": "Successfull operation"
+                        "description": "Successful operation"
                     }
                 }
             }
@@ -441,6 +598,42 @@
                 "type": "object",
                 "properties": {}
             },
+            "CurrentUserResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "success",
+                        "example": "success"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "description": "200 status code",
+                        "example": "200"
+                    },
+                    "data": {
+                        "type": "object",
+                        "description": "User's data",
+                        "properties": {
+                            "user": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "User's name",
+                                        "example": "Usertest"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "description": "User's email",
+                                        "format": "email"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "AddTransactionRequest": {
                 "type": "object",
                 "required": [
@@ -566,6 +759,50 @@
                         "type": "string",
                         "description": "User of transaction",
                         "example": "638f11b0e5b55643929616a6"
+                    }
+                }
+            },
+            "GetCategoriesResponse": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "description": "Categories",
+                    "example": "Cars, Products"
+                }                                              
+            },
+            "GetStatisticsResponse": {
+                "type": "object",
+                "properties": {
+                    "expensesByCategories": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "_id": {
+                                    "type": "string",
+                                    "description": "Transaction category",
+                                    "example": "Car"
+                                },
+                                "total": {
+                                    "type": "number",
+                                    "description": "Sum of transaction",
+                                    "example": "1000"
+                                }
+                            }
+                        }
+                    },
+                    "sums": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "spent": {
+                                    "type": "number",
+                                    "description": "Total spent",
+                                    "example": "10000"
+                                }                                
+                            }
+                        }
                     }
                 }
             }
