@@ -9,7 +9,7 @@ module.exports = async function getStatistics(req, res, next) {
   // month = Number(month);
   // year = Number(year);
 
-  const startDate = new Date(Number(year), Number(month - 1), 1, 3);
+  const startDate = new Date(Number(year), Number(month), 1, 3);
   const endDate = new Date(
     new Date(startDate).setMonth(new Date(startDate).getMonth() + 1)
   );
@@ -19,7 +19,6 @@ module.exports = async function getStatistics(req, res, next) {
 
   try {
     let expensesByCategories = await Transaction.aggregate([
-
       {
         $match: {
           owner,
@@ -34,7 +33,6 @@ module.exports = async function getStatistics(req, res, next) {
         },
       },
     ]);
-
 
     let sumsByTypes = await Transaction.aggregate([
       {
@@ -62,7 +60,6 @@ module.exports = async function getStatistics(req, res, next) {
     console.log(sums);
 
     res.json({ expensesByCategories, sums });
-
   } catch (error) {
     next(error);
   }

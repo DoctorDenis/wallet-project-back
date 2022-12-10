@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     },
     default: "basic",
   },
-  balance: { type: Number, default: 100 },
+  balance: { type: Number, default: 0 },
   avatarURL: String,
   emailVerified: {
     type: Boolean,

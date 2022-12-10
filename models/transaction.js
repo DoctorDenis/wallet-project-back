@@ -30,6 +30,10 @@ const addTransactionSchema = new Schema({
     ref: "user",
     required: true,
   },
+  balance: {
+    type: Number,
+    required: true,
+  },
 });
 
 addTransactionSchema.post("save", saveErrorHandler);
@@ -52,8 +56,10 @@ const joiSchema = Joi.object({
     "string.base": "'category' should be a type of 'string'",
   }),
   date: Joi.date().messages({
-    "string.base": "'date' should be a type of 'string'",
     "any.required": "'date' is a required field",
+  }),
+  balance: Joi.number().messages({
+    "number.base": "'balance' should be a type of 'number'",
   }),
 });
 

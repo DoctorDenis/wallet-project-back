@@ -114,6 +114,7 @@ module.exports = class userService {
         { _id: id },
         {
           $push: { transactions: transaction._id },
+          $set: { balance: transaction.balance },
         },
         //Повертаємо оновленного юзера з новою транзакцією
         { returnDocument: "after" }
