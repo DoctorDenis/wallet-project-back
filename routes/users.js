@@ -6,7 +6,7 @@ const {
   login,
   logout,
   refresh,
-  getCurrent
+  getCurrent,
 } = require("../controllers/users/index");
 
 const router = express.Router();
