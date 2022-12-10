@@ -1,4 +1,5 @@
-const { Transaction } = require("../../models/contacts");
+
+const { Transaction } = require("../../models/transaction");
 const ResponseError = require("../../helpers/errorHandler");
 
 const remove = async (req, res) => {
