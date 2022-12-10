@@ -18,4 +18,11 @@ router.post(
   ctrlWrapper(ctrl.add)
 );
 
+router.delete(
+  "/:transactionId",
+  validateToken,
+  isValidId,
+  ctrlWrapper(ctrl.remove)
+);
+
 module.exports = router;
