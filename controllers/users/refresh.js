@@ -12,16 +12,16 @@ const refresh = async (req, res) => {
     const { _id } = jwt.verify(token, SECRET_KEY);
     // console.log(_id)
     const user = await userModel.findById(_id);
-    // console.log(user._id)
-    if (!user || user.refreshToken !== token) {
-      throw new Error("Token expired. Please try again");
-    }
+    // console.log(user)
+    // if (!user || user.refreshToken !== token) {
+    //   throw new Error("Token expired. Please try again");
+    // }
     const payload = {
       id: user._id,
     };
-    // console.log(payload)
-    const accesToken = jwt.sign(payload, SECRET_KEY);
-    const refreshToken = jwt.sign(payload, SECRET_KEY);
+    console.log(payload)
+    const accesToken = jwt.sign(payload, SECRET_KEY, {expiresIn: "1h"});
+    const refreshToken = jwt.sign(payload, SECRET_KEY, {expiresIn: "10d"});
     await userModel.findByIdAndUpdate(user._id, { accesToken, refreshToken });
     res.json({
       accesToken,

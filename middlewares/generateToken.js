@@ -8,8 +8,8 @@ const { SECRET_KEY } = process.env;
 
 module.exports = function generateToken(user) {
   const payload = { _id: user._id };
-  const accesToken = jwt.sign(JSON.stringify(payload), SECRET_KEY);
-  const refreshToken = jwt.sign(JSON.stringify(payload), SECRET_KEY);
+  const accesToken = jwt.sign(payload, SECRET_KEY, {expiresIn: "1h"});
+  const refreshToken = jwt.sign(payload, SECRET_KEY, {expiresIn: "10d"});
   return {
     accesToken,
     refreshToken,
