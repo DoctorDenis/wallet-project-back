@@ -517,12 +517,12 @@
                     "accesToken": {
                         "type": "string",
                         "description": "token",
-                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI2Mzk1ZjFlOWYyZDE1MjhiZmRhMGEwYWEifQ.O_klEGDVOCTRjBksr_9ZmHe2_h-YfDI8vWVACn808nU"
                     },
                     "refreshToken": {
                         "type": "string",
                         "description": "token",
-                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI2Mzk1ZjFlOWYyZDE1MjhiZmRhMGEwYWEifQ.O_klEGDVOCTRjBksr_9ZmHe2_h-YfDI8vWVACn808nU"
                     }
                 }
             },
@@ -548,11 +548,6 @@
             "LoginResponse": {
                 "type":"object",
                 "properties": {
-                    "token": {
-                        "type": "string",
-                        "description": "token",
-                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
-                    },
                     "user": {
                         "type": "object",
                         "properties": {
@@ -581,12 +576,12 @@
                     "accesToken": {
                         "type": "string",
                         "description": "token",
-                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI2Mzk1ZjFlOWYyZDE1MjhiZmRhMGEwYWEifQ.O_klEGDVOCTRjBksr_9ZmHe2_h-YfDI8vWVACn808nU"
                     },
                     "refreshToken": {
                         "type": "string",
                         "description": "token",
-                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiS29zdHlhIiwicGFzc3dvcmQiOiIkMmIkMTAkWmxDLmYzRG5IRFVRMHJ0eEJEZEZmZXJYZWlsN1kzaEhzemljOUZLL3o2SkFWVW5vbXdPMDYiLCJlbWFpbCI6Imtvc3Rpa0BnbWFpbC5jb20iLCJzdWJzY3JpcHRpb24iOiJiYXNpYyIsImJhbGFuY2UiOjEwMCwiYXZhdGFyVVJMIjoiaHR0cDovL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzNkYmJkMTNkZDZjNGM1ZTg1MjA3YmE2ZDZmMTVkYjllP3M9MjAwJnI9cGcmZD1yZXRybyIsImVtYWlsVmVyaWZpZWQiOmZhbHNlLCJlbWFpbFZlcmlmaWNhdGlvblRva2VuIjoiMDYxR2x6M2RrIiwiX2lkIjoiNjM4YjVmNjAyMTgzNjE5MDExZDhhNDk2IiwiX192IjowfQ.Z8lf7wZQnknm3OVAat1E8-ZTubs2H7NZ_UMJ9mOZwMA"
+                        "example": "eyJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI2Mzk1ZjFlOWYyZDE1MjhiZmRhMGEwYWEifQ.O_klEGDVOCTRjBksr_9ZmHe2_h-YfDI8vWVACn808nU"
                     }
                 }
             },
@@ -618,16 +613,50 @@
                             "user": {
                                 "type": "object",
                                 "properties": {
+                                    "_id": {
+                                        "type": "string",
+                                        "description": "User ID",
+                                        "example": "6395f1e9f2d1528bfda0a0aa"
+                                    },
                                     "name": {
                                         "type": "string",
                                         "description": "User's name",
                                         "example": "Usertest"
                                     },
+                                    "password": {
+                                        "type": "string",
+                                        "description": "User's password",
+                                        "example": "LKDl:NDCNAWhaoawid89ydpaw8y992"
+                                    },
                                     "email": {
                                         "type": "string",
                                         "description": "User's email",
                                         "format": "email"
-                                    }
+                                    },
+                                    "balance": {
+                                        "type": "number",
+                                        "description": "User's balance",
+                                        "example": "100"
+                                    },
+                                    "emailVerified": {
+                                        "type": "boolean",
+                                        "description": "User's emailVerified",
+                                        "example": false
+                                    },"emailVerificationToken": {
+                                        "type": "string",
+                                        "description": "User's emailVerificationToken",
+                                        "example": "cnscsdvjdefwe32"
+                                    },
+                                    "temporaryPassword": {
+                                        "type": "string",
+                                        "description": "User's temporaryPassword",
+                                        "example": null
+                                    },
+                                    "transactions": {
+                                        "type": [],
+                                        "description": "User's transactions",
+                                        "example": []
+                                    }                                
                                 }
                             }
                         }
@@ -674,7 +703,7 @@
                         "type": "string",
                         "description": "Date of transaction",
                         "example": "11.11.2022"
-                    }
+                    }                    
                 }
             },
             "AddTransactionResponse": {
@@ -683,11 +712,6 @@
                     "transactions": {
                         "type": "object",
                         "properties": {
-                            "_id": {
-                                "type": "string",
-                                "description": "User ID",
-                                "example": "638f11b0e5b55643929616a6"
-                            },
                             "isIncome": {
                                 "type": "boolean",
                                 "description": "Type of transaction",
@@ -717,6 +741,16 @@
                                 "type": "string",
                                 "description": "User of transaction",
                                 "example": "638f11b0e5b55643929616a6"
+                            },
+                            "balance": {
+                                "type": "number",
+                                "description": "Current balance",
+                                "example": "1000"
+                            },
+                            "_id": {
+                                "type": "string",
+                                "description": "User ID",
+                                "example": "6395f83d0093ab41e81ab4e9"
                             }
                         }
                     }
@@ -725,41 +759,55 @@
             "GetAllTransactionsResponse": {
                 "type": "object",
                 "properties": {
-                    "_id": {
-                        "type": "string",
-                        "description": "User ID",
-                        "example": "638f11b0e5b55643929616a6"
-                    },
-                    "isIncome": {
-                        "type": "boolean",
-                        "description": "Type of transaction",
-                        "example": true
-                    },
-                    "amount": {
-                        "type": "number",
-                        "description": "Sum of transaction",
-                        "example": "1000"
-                    },
-                    "comment": {
-                        "type": "string",
-                        "description": "Comment of transaction",
-                        "example": ""
-                    },
-                    "category": {
-                        "type": "string",
-                        "description": "Category of transaction",
-                        "example": "Car"
-                    },
-                    "date": {
-                        "type": "string",
-                        "description": "Date of transaction",
-                        "example": "11.11.2022"
-                    },
-                        "owner": {
-                        "type": "string",
-                        "description": "User of transaction",
-                        "example": "638f11b0e5b55643929616a6"
+                    "transactions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "_id": {
+                                    "type": "string",
+                                    "description": "User ID",
+                                    "example": "638f11b0e5b55643929616a6"
+                                },
+                                "isIncome": {
+                                    "type": "boolean",
+                                    "description": "Type of transaction",
+                                    "example": true
+                                },
+                                "amount": {
+                                    "type": "number",
+                                    "description": "Sum of transaction",
+                                    "example": "1000"
+                                },
+                                "comment": {
+                                    "type": "string",
+                                    "description": "Comment of transaction",
+                                    "example": ""
+                                },
+                                "category": {
+                                    "type": "string",
+                                    "description": "Category of transaction",
+                                    "example": "Car"
+                                },
+                                "date": {
+                                    "type": "string",
+                                    "description": "Date of transaction",
+                                    "example": "11.11.2022"
+                                },
+                                "owner": {
+                                    "type": "string",
+                                    "description": "User of transaction",
+                                    "example": "638f11b0e5b55643929616a6"
+                                },
+                                "balance": {
+                                    "type": "number",
+                                    "description": "User's balance",
+                                    "example": "1000"
+                                }
+                            }
+                        }
                     }
+                    
                 }
             },
             "GetCategoriesResponse": {
