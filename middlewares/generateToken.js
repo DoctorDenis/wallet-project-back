@@ -6,7 +6,8 @@ const jwt = require("jsonwebtoken");
 
 const { SECRET_KEY } = process.env;
 
-module.exports = function generateToken(payload) {
+module.exports = function generateToken(user) {
+  const payload = user._id;
   const accesToken = jwt.sign(JSON.stringify(payload), SECRET_KEY);
   const refreshToken = jwt.sign(JSON.stringify(payload), SECRET_KEY);
   return {
