@@ -10,7 +10,15 @@ const add = async (req, res) => {
     (body.isIncome === true ? body.amount : body.amount * -1);
 
   body.balance = balance;
+  const transactionDate = new Date(body.date);
+  const currentTime = new Date();
+  const hour = currentTime.getHours();
+  const minutes = currentTime.getMinutes();
+  const seconds = currentTime.getSeconds();
 
+  transactionDate.setHours(hour, minutes, seconds);
+
+  body.date = transactionDate;
   const transaction = await Transaction.create(body);
   //Додаємо створену транзакцію до юзера у поле transactions і отримуємо оновленого юзера
   const user = await userServices.addTransactionToUser(
