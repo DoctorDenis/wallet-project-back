@@ -203,7 +203,7 @@
                 }
             }
         },
-        "users/current": {
+        "/users/current": {
             "get": {
                 "tags": [
                     "User"
