@@ -13,7 +13,6 @@ const addTransactionSchema = new Schema({
   },
   comment: {
     type: String,
-    default: "",
   },
   category: {
     type: String,
@@ -49,7 +48,7 @@ const joiSchema = Joi.object({
     "number.base": "'amount' should be a type of 'number'",
     "any.required": "'amount' is a required field",
   }),
-  comment: Joi.string().messages({
+  comment: Joi.string().empty("").messages({
     "string.base": "'comment' should be a type of 'string'",
   }),
   category: Joi.string().messages({
