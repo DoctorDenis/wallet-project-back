@@ -277,6 +277,47 @@
                         "content": {}
                     }
                 }
+            },
+            "delete": {
+                "tags": [
+                    "Transactions"
+                ],
+                "summary": "Remove a transaction",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "TransactionId",
+                        "required": true,
+                        "type": "string",
+                        "example": "63989eda21de3d15627cca63"
+                    }
+                ],
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Transaction was deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref":"#/components/schemas/RemoveTransactionResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid id format"
+                    },
+                    "401": {
+                        "description": "Not authorized"
+                    },
+                    "404": {
+                        "description": "Transaction not found"
+                    }
+                }
             }
         },
         "/transactions/add": {
@@ -702,57 +743,87 @@
                     "date": {
                         "type": "string",
                         "description": "Date of transaction",
-                        "example": "11.11.2022"
+                        "example": "2022-12-05"
                     }                    
                 }
             },
             "AddTransactionResponse": {
                 "type": "object",
+                "properties": {                    
+                    "isIncome": {
+                        "type": "boolean",
+                        "description": "Type of transaction",
+                        "example": true
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "Sum of transaction",
+                        "example": "1000"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Category of transaction",
+                        "example": "Car"
+                    },
+                    "date": {
+                        "type": "string",
+                        "description": "Date of transaction",
+                        "example": "2022-12-05"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "User ID",
+                        "example": "638f11b0e5b55643929616a6"
+                    },
+                    "balance": {
+                        "type": "number",
+                        "description": "Current balance",
+                        "example": "1000"
+                    },
+                    "_id": {
+                        "type": "string",
+                        "description": "ID transacton",
+                        "example": "6395f83d0093ab41e81ab4e9"
+                    }                  
+                }
+            },
+            "RemoveTransactionResponse": {
+                "type": "object",
                 "properties": {
-                    "transactions": {
-                        "type": "object",
-                        "properties": {
-                            "isIncome": {
-                                "type": "boolean",
-                                "description": "Type of transaction",
-                                "example": true
-                            },
-                            "amount": {
-                                "type": "number",
-                                "description": "Sum of transaction",
-                                "example": "1000"
-                            },
-                            "comment": {
-                                "type": "string",
-                                "description": "Comment of transaction",
-                                "example": ""
-                            },
-                            "category": {
-                                "type": "string",
-                                "description": "Category of transaction",
-                                "example": "Car"
-                            },
-                            "date": {
-                                "type": "string",
-                                "description": "Date of transaction",
-                                "example": "11.11.2022"
-                            },
-                            "owner": {
-                                "type": "string",
-                                "description": "User of transaction",
-                                "example": "638f11b0e5b55643929616a6"
-                            },
-                            "balance": {
-                                "type": "number",
-                                "description": "Current balance",
-                                "example": "1000"
-                            },
-                            "_id": {
-                                "type": "string",
-                                "description": "User ID",
-                                "example": "6395f83d0093ab41e81ab4e9"
-                            }
-                        }
+                    "_id": {
+                        "type": "string",
+                        "description": "ID transacton",
+                        "example": "6395f83d0093ab41e81ab4e9"
+                    },
+                    "isIncome": {
+                        "type": "boolean",
+                        "description": "Type of transaction",
+                        "example": true
+                    },
+                    "amount": {
+                        "type": "number",
+                        "description": "Sum of transaction",
+                        "example": "1000"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Category of transaction",
+                        "example": "Car"
+                    },
+                    "date": {
+                        "type": "string",
+                        "description": "Date of transaction",
+                        "example": "2022-12-05"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "User ID",
+                        "example": "638f11b0e5b55643929616a6"
+                    },
+                    "balance": {
+                        "type": "number",
+                        "description": "Current balance",
+                        "example": "1000"
                     }
                 }
             },
