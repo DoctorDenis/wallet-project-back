@@ -5,7 +5,6 @@ module.exports = async function getStatistics(req, res, next) {
 
   const { month, year } = req.query;
   const params = req.query;
-  // console.log("params:", params);
   const { _id: owner } = req.user;
 
   // month = Number(month);
@@ -15,9 +14,6 @@ module.exports = async function getStatistics(req, res, next) {
   const endDate = new Date(
     new Date(startDate).setMonth(new Date(startDate).getMonth() + 1)
   );
-
-  // console.log("start date: ", startDate);
-  // console.log("end date: ", endDate);
 
   try {
     let expensesByCategories = await Transaction.aggregate([

@@ -5,7 +5,6 @@ const ResponseError = require("../../helpers/errorHandler");
 const remove = async (req, res) => {
   const { transactionId } = req.params;
   const result = await Transaction.findByIdAndDelete(transactionId);
-  console.log(result);
   if (!result) {
     throw ResponseError(404, "Transaction Not Found");
   }
@@ -18,9 +17,6 @@ const remove = async (req, res) => {
     },
     { new: true }
   );
-
-  console.log(updatedUser);
-  console.log(updatedUser.transactions.length);
 
   result.balance = updatedUser.balance;
   res.status(200).json(result);
