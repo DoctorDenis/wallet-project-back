@@ -4,8 +4,6 @@ const gravatar = require("gravatar");
 const shortid = require("shortid");
 const createUserBodyResponse = require("../../helpers/createUserBodyResponse");
 const { userModel } = require("../../models/user");
-// const sendEmail = require("../../helpers/sendEmail");
-// const generateEmailBody = require("../../helpers/generateEmailBody");
 
 async function register(req, res, next) {
   const { body } = req;
